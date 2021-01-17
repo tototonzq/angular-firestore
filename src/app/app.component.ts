@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
     selector: 'app-root',
@@ -8,7 +9,21 @@ import { Component } from '@angular/core';
 export class AppComponent {
     title = 'angular-firestore';
 
-    simpan() {
-        console.log('!')
+    constructor( private firestore: AngularFirestore ){}
+
+    async simpan() {
+        let data = {
+            namaBarang: "Pepsodent 15mg",
+            stokBarang: 500,
+            hargaBarang: 2500
+        }
+        this.firestore.collection('barang')
+        .add(data)
+        .then(res => {
+            console.log(res);
+        })
+        .catch(e => {
+            console.log(e);
+        })
     }
 }
