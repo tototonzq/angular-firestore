@@ -1,2 +1,40 @@
-<h1>Halo</h1>
-<button (click)="simpan()">Submit</button>
+<div class="ui container">
+    <h1 style="padding-top: 2rem; text-align: center;">Angular CRUD</h1>
+    <hr>
+    <div class="ui form">
+        <div class="field">
+            <label>Nama Barang</label>
+            <input type="text">
+        </div>
+        <div class="field">
+            <label>Stok</label>
+            <input type="number">
+        </div>
+        <div class="field">
+            <label>Harga</label>
+            <input type="number">
+        </div>
+        <div class="ui inverted primary button">Simpan</div>
+    </div>
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Job</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Name">James</td>
+                <td data-label="Age">24</td>
+                <td data-label="Job">Engineer</td>
+            </tr>
+            <tr>
+                <td data-label="Name">Jill</td>
+                <td data-label="Age">26</td>
+                <td data-label="Job">Engineer</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
