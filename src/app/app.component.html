@@ -3,57 +3,33 @@
     <div class="ui form">
         <div class="field">
             <label>Nama Barang</label>
-            <input type="text">
+            <input type="text" [(ngModel)]="nama" name="nama" autocomplete="off">
         </div>
         <div class="field">
             <label>Stok</label>
-            <input type="number">
+            <input type="number" [(ngModel)]="stok" name="stok" autocomplete="off">
         </div>
         <div class="field">
             <label>Harga</label>
-            <input type="number">
+            <input type="number" [(ngModel)]="harga" name="harga" autocomplete="off">
         </div>
-        <div class="ui inverted primary button">Simpan</div>
+        <div class="ui inverted primary button" (click)="simpan()">Simpan</div>
     </div>
     <table class="ui celled table">
         <thead>
-            <tr>
+            <tr class="ui center aligned">
                 <th>Nama Barang</th>
                 <th>Stok</th>
                 <th>Harga</th>
-                <th class="ui center aligned">Aksi</th>
+                <th>Aksi</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody *ngFor="let item of this.myData" class="ui center aligned">
             <tr>
-                <td data-label="Nama Barang">James</td>
-                <td data-label="Stok">24</td>
-                <td data-label="Harga">Engineer</td>
-                <td data-label="Aksi" class="ui center aligned">
-                    <div class="ui buttons">
-                        <button class="ui positive button">Edit</button>
-                        <div class="or" data-text="/"></div>
-                        <button class="ui button">Hapus</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td data-label="Nama Barang">Jill</td>
-                <td data-label="Stok">26</td>
-                <td data-label="Harga">Engineer</td>
-                <td data-label="Aksi" class="ui center aligned">
-                    <div class="ui buttons">
-                        <button class="ui positive button">Edit</button>
-                        <div class="or" data-text="/"></div>
-                        <button class="ui button">Hapus</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td data-label="Nama Barang">Jill</td>
-                <td data-label="Stok">26</td>
-                <td data-label="Harga">Engineer</td>
-                <td data-label="Aksi" class="ui center aligned">
+                <td data-label="Nama Barang">{{item.namaBarang}}</td>
+                <td data-label="Stok">{{item.stokBarang}}</td>
+                <td data-label="Harga">{{item.hargaBarang}}</td>
+                <td data-label="Aksi">
                     <div class="ui buttons">
                         <button class="ui positive button">Edit</button>
                         <div class="or" data-text="/"></div>

@@ -7,20 +7,39 @@ import { AngularFirestore } from '@angular/fire/firestore';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    title = 'angular-firestore';
 
-    constructor( private firestore: AngularFirestore ){}
+    title = 'angular-firestore';
+    myData: any[] = [];
+    nama;
+    stok;
+    harga;
+
+    constructor( private firestore: AngularFirestore ){
+        this.tampilData();
+    }
+
+    tampilData() {
+        this.firestore.collection("barang")
+        .get()
+        .subscribe((ss) => {
+            ss.docs.forEach((doc) => {
+                this.myData.push(doc.data());
+            });
+            console.log(this.myData)
+        });
+    }
 
     async simpan() {
         let data = {
-            namaBarang: "Pepsodent 15mg",
-            stokBarang: 500,
-            hargaBarang: 2500
+            namaBarang: this.nama,
+            stokBarang: this.stok,
+            hargaBarang: this.harga
         }
         this.firestore.collection('barang')
         .add(data)
         .then(res => {
             console.log(res);
+            this.tampilData();
         })
         .catch(e => {
             console.log(e);
