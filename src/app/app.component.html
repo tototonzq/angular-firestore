@@ -13,7 +13,9 @@
             <label>Harga</label>
             <input type="number" [(ngModel)]="harga" name="harga" autocomplete="off">
         </div>
-        <div class="ui inverted primary button" (click)="simpan()">Simpan</div>
+        <div class="ui inverted primary button" *ngIf="!isEdit" (click)="simpan()">Simpan</div>
+        <div class="ui inverted primary button" *ngIf="isEdit" (click)="edit()">Perbarui</div>
+        <div class="ui inverted secondary button" (click)="reset()">Reset</div>
     </div>
     <table class="ui celled table">
         <thead>
@@ -26,14 +28,14 @@
         </thead>
         <tbody *ngFor="let item of this.myData" class="ui center aligned">
             <tr>
-                <td data-label="Nama Barang">{{item.namaBarang}}</td>
-                <td data-label="Stok">{{item.stokBarang}}</td>
-                <td data-label="Harga">{{item.hargaBarang}}</td>
+                <td data-label="Nama Barang">{{item.id}} - {{item.namaBarang}}</td>
+                <td data-label="Stok">{{item.stokBarang.toLocaleString(['id'])}}</td>
+                <td data-label="Harga">Rp. {{item.hargaBarang.toLocaleString(['id'])}}</td>
                 <td data-label="Aksi">
                     <div class="ui buttons">
-                        <button class="ui positive button">Edit</button>
+                        <button class="ui positive button" (click)="getEdit(item)">Edit</button>
                         <div class="or" data-text="/"></div>
-                        <button class="ui button">Hapus</button>
+                        <button class="ui button" (click)="delete(item)">Hapus</button>
                     </div>
                 </td>
             </tr>
