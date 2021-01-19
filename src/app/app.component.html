@@ -28,7 +28,7 @@
         </thead>
         <tbody *ngFor="let item of this.myData" class="ui center aligned">
             <tr>
-                <td data-label="Nama Barang">{{item.id}} - {{item.namaBarang}}</td>
+                <td data-label="Nama Barang">{{item.namaBarang}}</td>
                 <td data-label="Stok">{{item.stokBarang.toLocaleString(['id'])}}</td>
                 <td data-label="Harga">Rp. {{item.hargaBarang.toLocaleString(['id'])}}</td>
                 <td data-label="Aksi">
