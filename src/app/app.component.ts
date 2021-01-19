@@ -28,7 +28,7 @@ export class AppComponent {
         this.isEdit = false
     }
 
-    async simpan() {
+    simpan() {
         let data = {
             namaBarang: this.nama,
             stokBarang: this.stok,
