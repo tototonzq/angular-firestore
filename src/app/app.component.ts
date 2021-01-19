@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-root',
@@ -61,13 +60,31 @@ export class AppComponent {
             stokBarang: this.stok,
             hargaBarang: this.harga
         }
-        this.firestore.collection('barang').doc(this.id).update(data);
-        this.tampilData();
-        this.reset();
+        this.firestore.collection('barang')
+        .doc(this.id)
+        .update(data)
+        .then(res => {
+            console.log(res);
+            this.tampilData();
+            this.reset();
+        })
+        .catch(e => {
+            console.log(e);
+        })
     }
 
     delete(arr) {
-        this.firestore.collection('barang').doc(arr.id).delete();
+        this.firestore.collection('barang')
+        .doc(arr.id)
+        .delete()
+        .then(res => {
+            console.log(res);
+            this.tampilData();
+            this.reset();
+        })
+        .catch(e => {
+            console.log(e);
+        })
     }
 
     reset() {
